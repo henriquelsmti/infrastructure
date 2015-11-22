@@ -1,8 +1,8 @@
 package br.com.datarey.model;
 
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-public class Associacao extends Entidade{
+@MappedSuperclass
+public abstract class Associacao extends Entidade {
 
 }

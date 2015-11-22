@@ -97,13 +97,6 @@
 
 		<!-- javaFX -->
 
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>javafx</artifactId>
-			<version>${javafx.version}</version>
-			<systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
-			<scope>system</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.jfxtras</groupId>
@@ -118,13 +111,52 @@
 			<version>4.11</version>
 		</dependency>
 
+		<!-- bean validation -->
 
-        <!-- infra -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-cdi</artifactId>
+			<version>5.2.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+
+		<!-- infra -->
 		<dependency>
 			<groupId>br.com.generic-dao</groupId>
 			<artifactId>generic-dao</artifactId>
 			<version>0.0.1</version>
 		</dependency>
+
+
+		<!-- Util -->
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+	
+
+
 
 	</dependencies>
 </project>

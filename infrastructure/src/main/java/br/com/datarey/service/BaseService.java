@@ -1,8 +1,7 @@
 package br.com.datarey.service;
 
-import br.com.datarey.transactional.Transactional;
+import java.util.List;
 
-@Transactional
 public interface BaseService<E> {
-
+    public List<E> pesquisar(List<ItemPesquisa> itens);
 }
