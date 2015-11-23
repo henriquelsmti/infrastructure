@@ -8,9 +8,11 @@ import br.com.generic.dao.GenericDAOImpl;
 
 public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implements BaseDao<T> {
 
-    @Override
     @Inject
-    public void setEntityManager(EntityManager manager) {
-        super.setEntityManager(manager);
+    private JpaUtil jpaUtil;
+    
+    @Override
+    protected EntityManager getEntityManager() {
+        return jpaUtil.getEntityManager();
     }
 }

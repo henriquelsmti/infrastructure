@@ -9,12 +9,16 @@ import br.com.datarey.model.Entidade;
 import br.com.datarey.transactional.Transactional;
 import br.com.generic.dao.SearchEntityListBuilder;
 
+@SuppressWarnings("rawtypes")
 @Transactional
-public class BaseServiceImpl<E extends Entidade, D extends BaseDao<E>> implements BaseService<E> {
+public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> implements BaseService<E> {
 
+    private static final long serialVersionUID = -7061695914391018105L;
+    
     @Inject
     protected D dao;
 
+    @SuppressWarnings("unchecked")
     public List<E> pesquisar(List<ItemPesquisa> itens){
         SearchEntityListBuilder<E> builder = dao.listEntities();
         
