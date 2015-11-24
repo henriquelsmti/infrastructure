@@ -6,16 +6,17 @@ public class Usuario extends NomeCodigo {
 
     private String login;
     private String senha;
-    protected String getLogin() {
+    
+    public String getLogin() {
         return this.login;
     }
-    protected void setLogin(String login) {
+    public void setLogin(String login) {
         this.login = login;
     }
-    protected String getSenha() {
+    public String getSenha() {
         return this.senha;
     }
-    protected void setSenha(String senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
     
