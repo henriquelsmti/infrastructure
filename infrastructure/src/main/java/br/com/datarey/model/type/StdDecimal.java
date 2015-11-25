@@ -129,7 +129,7 @@ public abstract class StdDecimal<SD extends StdDecimal<SD>> extends Number imple
 
 	@Override
 	public String toString() {
-		return value.toString();
+		return String.format("%."+ getScale() +"d", value.doubleValue());
 	}
 
 	@Override

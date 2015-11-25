@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.datarey</groupId>
 	<artifactId>infrastructure</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<build>
 		<plugins>
@@ -143,6 +143,7 @@
 			<groupId>br.com.generic-dao</groupId>
 			<artifactId>generic-dao</artifactId>
 			<version>0.0.1</version>
+			<scope>runtime</scope>
 		</dependency>
 
 

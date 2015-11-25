@@ -1,4 +1,4 @@
-package br.com.datarey.Util;
+package br.com.datarey.util;
 
 public enum MessageType {
     ERROR, INFO, ALERT;

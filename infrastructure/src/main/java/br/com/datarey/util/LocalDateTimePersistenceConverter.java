@@ -1,4 +1,4 @@
-package br.com.datarey.Util;
+package br.com.datarey.util;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
