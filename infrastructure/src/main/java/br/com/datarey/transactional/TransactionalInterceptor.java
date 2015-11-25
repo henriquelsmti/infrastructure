@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.persistence.EntityManager;
 
 import br.com.datarey.Util.MessageType;
 import br.com.datarey.Util.MessageUtil;
@@ -34,22 +33,9 @@ public class TransactionalInterceptor implements Serializable {
             return context.proceed();
         }
         TransactionalReturn transactionalReturn = new TransactionalReturn();
-        Runnable transaction = () -> {
-            EntityManager manager = jpaUtil.createEntityManager();
-            try {
-                manager.getTransaction().begin();
-                transactionalReturn.setValue(context.proceed());
-                manager.getTransaction().commit();
-            } catch (Exception t) {
-                lancarMessage(t.getMessage());
-                if (manager.getTransaction() != null && manager.getTransaction().isActive()) {
-                    manager.getTransaction().rollback();
-                }
-            } finally {
-                jpaUtil.destroyEntityManager();
-                notify();
-            }
-        };
+        TransactionalThread transaction = new TransactionalThread(context, 
+                transactionalReturn, jpaUtil);
+        
         Thread t = new Thread(transaction);
         t.start();
         synchronized (t) {
