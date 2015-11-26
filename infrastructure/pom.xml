@@ -139,12 +139,12 @@
 
 
 		<!-- infra -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>br.com.generic-dao</groupId>
 			<artifactId>generic-dao</artifactId>
 			<version>0.0.1</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 
 
 		<!-- Util -->
