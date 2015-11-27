@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.datarey</groupId>
 	<artifactId>infrastructure</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<build>
 		<plugins>
@@ -19,6 +19,16 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>internal</id>
+			<url>http://localhost:8080/repository/internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://localhost:8080/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,41 +40,49 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.10.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-osgi</artifactId>
 			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
 			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-proxool</artifactId>
 			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-infinispan</artifactId>
 			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jandex</artifactId>
 			<version>1.2.2.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- <dependency> <groupId>org.jboss.weld</groupId> <artifactId>weld-core</artifactId> 
@@ -74,12 +92,14 @@
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-core</artifactId>
 			<version>2.2.15.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se</artifactId>
 			<version>2.2.15.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- JDBC drive -->
@@ -87,24 +107,16 @@
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901-1.jdbc4</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.35</version>
+			<scope>compile</scope>
 		</dependency>
 
-		<!-- javaFX -->
-
-
-		<dependency>
-			<groupId>org.jfxtras</groupId>
-			<artifactId>jfxtras-labs</artifactId>
-			<version>8.0-r4</version>
-		</dependency>
-
-		<!-- javaFX -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -117,34 +129,32 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.2.1.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator-cdi</artifactId>
 			<version>5.2.1.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-web</artifactId>
-			<version>1.2.4</version>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.2</version>
+			<scope>compile</scope>
 		</dependency>
 
 
 		<!-- infra -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>br.com.generic-dao</groupId>
 			<artifactId>generic-dao</artifactId>
 			<version>0.0.1</version>
-			<scope>runtime</scope>
-		</dependency> -->
+			<scope>compile</scope>
+		</dependency>
 
 
 		<!-- Util -->
@@ -153,12 +163,14 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+			<scope>compile</scope>
 		</dependency>
 
 

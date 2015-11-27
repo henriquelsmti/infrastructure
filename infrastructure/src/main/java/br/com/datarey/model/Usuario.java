@@ -1,7 +1,10 @@
 package br.com.datarey.model;
 
+import javax.persistence.Entity;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
+@Entity
 public class Usuario extends NomeCodigo {
 
     private String login;

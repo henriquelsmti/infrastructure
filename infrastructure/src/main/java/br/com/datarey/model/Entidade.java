@@ -6,11 +6,15 @@ import javax.persistence.MappedSuperclass;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import br.com.datarey.model.type.EntidadeEstado;
+
 @MappedSuperclass
 public abstract class Entidade {
 
     @Id
     private Long id;
+    
+    private EntidadeEstado estado;
 
     public Long getId() {
         return this.id;
@@ -18,6 +22,14 @@ public abstract class Entidade {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public EntidadeEstado getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(EntidadeEstado estado) {
+        this.estado = estado;
     }
 
     @Override

@@ -65,7 +65,7 @@ public abstract class StdDecimal<SD extends StdDecimal<SD>> extends Number imple
 	}
 
 	@SuppressWarnings("unchecked")
-	public SD setValue(BigDecimal value) {
+	protected SD setValue(BigDecimal value) {
 		this.value = value.setScale(getScale(), ROUNDING_MODE);
 		return (SD) this;
 	}
@@ -129,7 +129,7 @@ public abstract class StdDecimal<SD extends StdDecimal<SD>> extends Number imple
 
 	@Override
 	public String toString() {
-		return String.format("%."+ getScale() +"d", value.doubleValue());
+		return value.toString();
 	}
 
 	@Override

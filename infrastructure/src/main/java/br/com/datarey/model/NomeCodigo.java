@@ -11,6 +11,4 @@ public abstract class NomeCodigo extends EntidadeCodigo {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
 }
