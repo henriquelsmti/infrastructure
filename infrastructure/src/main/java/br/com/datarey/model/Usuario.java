@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Entity
-public class Usuario extends NomeCodigo {
+public class Usuario extends Identificador {
 
     private String login;
     private String senha;

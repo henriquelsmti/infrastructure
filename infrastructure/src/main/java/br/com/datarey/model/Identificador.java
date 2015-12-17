@@ -1,6 +1,6 @@
 package br.com.datarey.model;
 
-public abstract class NomeCodigo extends EntidadeCodigo {
+public abstract class Identificador extends CodigoIdentificador {
     
     private String nome;
 

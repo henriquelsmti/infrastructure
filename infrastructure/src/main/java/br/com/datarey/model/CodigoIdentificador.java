@@ -3,7 +3,7 @@ package br.com.datarey.model;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.NaturalId;
 
-public abstract class EntidadeCodigo extends Entidade {
+public abstract class CodigoIdentificador extends Entidade {
 
     @NaturalId
     private Long codigo;
