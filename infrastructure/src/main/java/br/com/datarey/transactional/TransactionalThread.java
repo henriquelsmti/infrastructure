@@ -33,6 +33,7 @@ public class TransactionalThread implements Runnable {
                 if (manager.getTransaction() != null && manager.getTransaction().isActive()) {
                     manager.getTransaction().rollback();
                 }
+                transactionalReturn.setError(t);
                 throw new RuntimeException(t);
             } finally {
                 jpaUtil.destroyEntityManager();
@@ -40,5 +41,6 @@ public class TransactionalThread implements Runnable {
             }
         }
     }
+   
 
 }

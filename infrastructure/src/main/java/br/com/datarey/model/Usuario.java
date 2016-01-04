@@ -1,10 +1,13 @@
 package br.com.datarey.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
 public class Usuario extends Identificador {
 
     private String login;

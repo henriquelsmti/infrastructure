@@ -45,6 +45,9 @@ public class TransactionalInterceptor implements Serializable {
                 lancarMessage(e.getMessage());
             }
         }
+        if(transactionalReturn.containsErro()){
+            lancarMessage(transactionalReturn.getError().getMessage());
+        }
         return transactionalReturn.getValue();
     }
 
