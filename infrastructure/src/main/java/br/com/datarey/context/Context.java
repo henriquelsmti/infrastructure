@@ -9,7 +9,8 @@ public class Context {
     private static Weld weld;
     private static WeldContainer container;
 
-    static {
+  
+    public static void init(){
         weld = new Weld();
         container = weld.initialize();
     }
@@ -22,5 +23,10 @@ public class Context {
     @SuppressWarnings("unchecked")
     public static <T> T getBean(Class<?> clazz, Annotation... annotations) {
         return (T) container.instance().select(clazz, annotations).get();
+    }
+    
+    public static void shutdown(){
+        weld.shutdown();
+        System.exit(0);
     }
 }
