@@ -20,9 +20,6 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
     @Inject
     protected D dao;
 
-    private final Class<E> entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
-            .getActualTypeArguments()[0];
-
     @Override
     public E insert(E entity) {
         entity = beforeSave(entity);
@@ -85,17 +82,7 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
         return (List<E>) dao.list(beginning, end, order);
     }
 
-    public List<E> list(List<ItemPesquisa> itens) {
-        SearchEntityListBuilder<E> builder = dao.listEntities();
-
-        for (ItemPesquisa itemPesquisa : itens) {
-            itemPesquisa.getRegra().addSearch(itemPesquisa, builder);
-        }
-        builder.sortBy(itens.get(0).getPropriedade());
-
-        return builder.list();
-    }
-
+    
     protected E consist(E entity) {
         return entity;
     }
@@ -142,37 +129,22 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
 
     @Override
     public SearchEntityListBuilder<E> listEntities() {
-        return new SearchEntityListBuilder<E>(entityClass);
+        return dao.listEntities();
     }
 
     @Override
     public SearchEntityBuilder<E> searchEntity() {
-        return new SearchEntityBuilder<E>(entityClass);
+        return dao.searchEntity();
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public <T> SearchListBuilder<E, T> listProperties(String field) {
-        ParameterizedType paramType;
-        paramType = (ParameterizedType) new Param<T>().getClass().getGenericInterfaces()[0];
-        Class<T> parameterClass = (Class<T>) paramType.getActualTypeArguments()[0].getClass();
-
-        SearchListBuilder<E, T> searchListBuilder = new SearchListBuilder<E, T>(entityClass,
-                parameterClass);
-        searchListBuilder.setField(field);
-        return searchListBuilder;
+        return dao.listProperties(field);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public <T> SearchBuilder<E, T> searchProperty(String field) {
-        ParameterizedType paramType;
-        paramType = (ParameterizedType) new Param<T>().getClass().getGenericInterfaces()[0];
-        Class<T> parameterClass = (Class<T>) paramType.getActualTypeArguments()[0].getClass();
-
-        SearchBuilder<T, E> searchBuilder = new SearchBuilder<T, E>(entityClass, parameterClass);
-        searchBuilder.setField(field);
-        return searchBuilder;
+        return dao.searchProperty(field);
     }
 
 }

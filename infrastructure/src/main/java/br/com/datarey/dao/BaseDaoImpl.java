@@ -5,13 +5,26 @@ import java.lang.reflect.ParameterizedType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import br.com.datarey.dao.SearchBuilders.SearchBuilder;
-import br.com.datarey.dao.SearchBuilders.SearchEntityBuilder;
-import br.com.datarey.dao.SearchBuilders.SearchEntityListBuilder;
-import br.com.datarey.dao.SearchBuilders.SearchListBuilder;
+
+
+
+
+
+
+
+
+
+import br.com.datarey.dao.SearchBuilders.SearchBuilderImpl;
+import br.com.datarey.dao.SearchBuilders.SearchEntityBuilderImpl;
+import br.com.datarey.dao.SearchBuilders.SearchEntityListBuilderImpl;
+import br.com.datarey.dao.SearchBuilders.SearchListBuilderImpl;
 import br.com.datarey.model.Entidade;
 import br.com.datarey.model.type.EntidadeEstado;
 import br.com.generic.dao.GenericDAOImpl;
+import br.com.generic.dao.SearchBuilder;
+import br.com.generic.dao.SearchEntityBuilder;
+import br.com.generic.dao.SearchEntityListBuilder;
+import br.com.generic.dao.SearchListBuilder;
 
 public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implements BaseDao<T> {
 
@@ -57,7 +70,7 @@ public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implement
 
     @Override
     public SearchEntityListBuilder<T> listEntities() {
-        return new SearchEntityListBuilder<T>(getEntityManager(), getEntityClass());
+        return new SearchEntityListBuilderImpl<T>(getEntityManager(), getEntityClass());
     }
 
     @Override
@@ -66,8 +79,8 @@ public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implement
     }
 
     @Override
-    public br.com.generic.dao.SearchEntityBuilder<T> searchEntity() {
-        return new SearchEntityBuilder<T>(getEntityManager(), getEntityClass());
+    public SearchEntityBuilder<T> searchEntity() {
+        return new SearchEntityBuilderImpl<T>(getEntityManager(), getEntityClass());
     }
 
     @Override
@@ -77,7 +90,7 @@ public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implement
         paramType = (ParameterizedType) new Param<E>().getClass().getGenericInterfaces()[0];
         Class<E> parameterClass = (Class<E>) paramType.getActualTypeArguments()[0].getClass();
 
-        SearchListBuilder<T, E> searchListBuilder = new SearchListBuilder<T, E>(getEntityManager(), getEntityClass(),
+        SearchListBuilder<T, E> searchListBuilder = new SearchListBuilderImpl<T, E>(getEntityManager(), getEntityClass(),
                 parameterClass);
         searchListBuilder.setField(field);
         return searchListBuilder;
@@ -90,7 +103,7 @@ public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implement
         paramType = (ParameterizedType) new Param<E>().getClass().getGenericInterfaces()[0];
         Class<E> parameterClass = (Class<E>) paramType.getActualTypeArguments()[0].getClass();
 
-        SearchBuilder<T, E> searchBuilder = new SearchBuilder<>(getEntityManager(), getEntityClass(), parameterClass);
+        SearchBuilder<T, E> searchBuilder = new SearchBuilderImpl<>(getEntityManager(), getEntityClass(), parameterClass);
         searchBuilder.setField(field);
         return searchBuilder;
     }
