@@ -3,6 +3,13 @@ package br.com.datarey.service;
 import java.io.Serializable;
 import java.util.List;
 
+import br.com.datarey.transactional.Transactional;
+import br.com.generic.dao.SearchBuilder;
+import br.com.generic.dao.SearchEntityBuilder;
+import br.com.generic.dao.SearchEntityListBuilder;
+import br.com.generic.dao.SearchListBuilder;
+
+@Transactional
 public interface BaseService<E> extends  Serializable{
     
     public E insert(E entity);
@@ -19,5 +26,11 @@ public interface BaseService<E> extends  Serializable{
 
     public List<E> list(int beginning, int end, String order);
     
-    public List<E> list(List<ItemPesquisa> itens);
+    public SearchEntityListBuilder<E> listEntities();
+
+    public SearchEntityBuilder<E> searchEntity();
+
+    public <T> SearchListBuilder<E, T> listProperties(String field);
+
+    public<T> SearchBuilder<E, T> searchProperty(String field);
 }
