@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PreDestroy;
-import javax.inject.Singleton;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-@Singleton
+@ApplicationScoped
 public class JpaUtil {
 
     private static EntityManagerFactory factory;

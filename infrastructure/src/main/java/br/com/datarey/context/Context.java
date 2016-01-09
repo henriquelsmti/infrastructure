@@ -5,6 +5,8 @@ import java.lang.annotation.Annotation;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
+import br.com.datarey.dao.JpaUtil;
+
 public class Context {
     private static Weld weld;
     private static WeldContainer container;
@@ -13,6 +15,8 @@ public class Context {
     public static void init(){
         weld = new Weld();
         container = weld.initialize();
+        //inicia conexão da jpa
+        getBean(JpaUtil.class);
     }
 
     @SuppressWarnings("unchecked")
