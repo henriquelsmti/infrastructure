@@ -22,6 +22,10 @@ public interface BaseService<E> extends  Serializable{
     
     public E inactivate(E entity);
 
+    public E activate(E entity);
+
+    public E createModel();
+
     public E findEntityById(long id);
 
     public List<E> list(int beginning, int end, String order);

@@ -1,5 +1,10 @@
 package br.com.datarey.dao;
 
+import br.com.datarey.context.Context;
+import br.com.datarey.util.MessageType;
+import br.com.datarey.util.MessageUtil;
+import org.apache.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,11 +19,18 @@ public class JpaUtil {
 
     private static EntityManagerFactory factory;
 
+    private final Logger LOGGER = Logger.getLogger(JpaUtil.class);
+
     private Map<Long, EntityManager> pool = new HashMap<>();
 
     public JpaUtil() {
-        if (factory == null)
-            factory = Persistence.createEntityManagerFactory("banco");
+        try{
+            if (factory == null)
+                factory = Persistence.createEntityManagerFactory("banco");
+        }catch (Exception e){
+            LOGGER.error(e);
+            throw e;
+        }
     }
 
     public synchronized EntityManager createEntityManager() {

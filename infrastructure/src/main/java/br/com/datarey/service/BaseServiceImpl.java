@@ -12,13 +12,18 @@ import br.com.generic.dao.SearchEntityBuilder;
 import br.com.generic.dao.SearchEntityListBuilder;
 import br.com.generic.dao.SearchListBuilder;
 
-@SuppressWarnings({ "rawtypes", "unchecked" })
+@SuppressWarnings({"rawtypes", "unchecked"})
 public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> implements BaseService<E> {
 
     private static final long serialVersionUID = -7061695914391018105L;
 
     @Inject
     protected D dao;
+
+    @Override
+    public E createModel() {
+        return (E) dao.createModel();
+    }
 
     @Override
     public E insert(E entity) {
@@ -73,6 +78,14 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
     }
 
     @Override
+    public E activate(E entity) {
+        entity = beforeActivate(entity);
+        entity = (E) dao.inactivate(entity);
+        entity = afterActivate(entity);
+        return entity;
+    }
+
+    @Override
     public E findEntityById(long id) {
         return (E) dao.findEntityById(id);
     }
@@ -82,7 +95,7 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
         return (List<E>) dao.list(beginning, end, order);
     }
 
-    
+
     protected E consist(E entity) {
         return entity;
     }
@@ -124,6 +137,14 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
     }
 
     protected E afterInactivate(E entity) {
+        return entity;
+    }
+
+    protected E beforeActivate(E entity) {
+        return entity;
+    }
+
+    protected E afterActivate(E entity) {
         return entity;
     }
 

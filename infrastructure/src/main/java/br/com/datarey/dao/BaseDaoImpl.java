@@ -26,7 +26,7 @@ import br.com.generic.dao.SearchEntityBuilder;
 import br.com.generic.dao.SearchEntityListBuilder;
 import br.com.generic.dao.SearchListBuilder;
 
-public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implements BaseDao<T> {
+public abstract class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implements BaseDao<T> {
 
     @Inject
     private JpaUtil jpaUtil;
@@ -41,6 +41,13 @@ public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implement
         entity.setEstado(EntidadeEstado.INATIVO);
         entity = update(entity);
         return afterInactivate(entity);
+    }
+
+    public T activate(T entity) {
+        entity = beforeActivate(entity);
+        entity.setEstado(EntidadeEstado.ATIVO);
+        entity = update(entity);
+        return afterActivate(entity);
     }
 
     @Override
@@ -113,6 +120,14 @@ public class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> implement
     }
 
     protected T afterInactivate(T entity) {
+        return entity;
+    }
+
+    protected T beforeActivate(T entity) {
+        return entity;
+    }
+
+    protected T afterActivate(T entity) {
         return entity;
     }
 
