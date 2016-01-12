@@ -1,18 +1,15 @@
 package br.com.datarey.dao;
 
-import br.com.datarey.context.Context;
-import br.com.datarey.util.MessageType;
-import br.com.datarey.util.MessageUtil;
 import org.apache.log4j.Logger;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 @ApplicationScoped
 public class JpaUtil {
@@ -25,8 +22,10 @@ public class JpaUtil {
 
     public JpaUtil() {
         try{
-            if (factory == null)
+            if (factory == null){
+                addClassInPersistenceXML();
                 factory = Persistence.createEntityManagerFactory("banco");
+            }
         }catch (Exception e){
             LOGGER.error(e);
             throw e;
@@ -53,4 +52,6 @@ public class JpaUtil {
         factory.close();
     }
 
+    private void addClassInPersistenceXML(){
+    }
 }
