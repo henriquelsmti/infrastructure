@@ -40,7 +40,7 @@ public class JpaUtil {
     }
 
     public void destroyEntityManager() {
-        EntityManager manager = pool.get(Thread.currentThread().getId());
+        EntityManager manager = pool.remove(Thread.currentThread().getId());
         manager.close();
     }
 

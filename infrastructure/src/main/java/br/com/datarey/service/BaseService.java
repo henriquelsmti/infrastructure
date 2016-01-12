@@ -1,15 +1,13 @@
 package br.com.datarey.service;
 
-import java.io.Serializable;
-import java.util.List;
-
-import br.com.datarey.transactional.Transactional;
 import br.com.generic.dao.SearchBuilder;
 import br.com.generic.dao.SearchEntityBuilder;
 import br.com.generic.dao.SearchEntityListBuilder;
 import br.com.generic.dao.SearchListBuilder;
 
-@Transactional
+import java.io.Serializable;
+import java.util.List;
+
 public interface BaseService<E> extends  Serializable{
     
     public E insert(E entity);

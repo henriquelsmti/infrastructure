@@ -7,12 +7,14 @@ import javax.inject.Inject;
 
 import br.com.datarey.dao.BaseDao;
 import br.com.datarey.model.Entidade;
+import br.com.datarey.transactional.Transactional;
 import br.com.generic.dao.SearchBuilder;
 import br.com.generic.dao.SearchEntityBuilder;
 import br.com.generic.dao.SearchEntityListBuilder;
 import br.com.generic.dao.SearchListBuilder;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
+@Transactional
 public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> implements BaseService<E> {
 
     private static final long serialVersionUID = -7061695914391018105L;
@@ -38,7 +40,7 @@ public abstract class BaseServiceImpl<E extends Entidade, D extends BaseDao> imp
     @Override
     public E save(E entity) {
         entity = beforeSave(entity);
-        if (entity.getId() == 0 || entity.getId() == null) {
+        if (entity.getId() == null || entity.getId() == 0) {
             entity = beforeInsert(entity);
             entity = (E) dao.save(entity);
             entity = afterInsert(entity);

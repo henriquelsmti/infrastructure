@@ -1,5 +1,6 @@
 package br.com.datarey.model;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -12,6 +13,7 @@ import br.com.datarey.model.type.EntidadeEstado;
 public abstract class Entidade {
 
     @Id
+    @GeneratedValue
     private Long id;
     
     private EntidadeEstado estado;
