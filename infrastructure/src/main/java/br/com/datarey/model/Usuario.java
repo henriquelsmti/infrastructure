@@ -5,12 +5,15 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
 public class Usuario extends Identificador {
 
+    @NotBlank(message = "Login e obrigatorio")
     private String login;
+    @NotBlank(message = "Senha e obrigatorio")
     private String senha;
     
     public String getLogin() {

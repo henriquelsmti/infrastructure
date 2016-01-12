@@ -53,6 +53,7 @@ public abstract class BaseDaoImpl<T extends Entidade> extends GenericDAOImpl<T> 
     @Override
     public T insert(T entity) {
         entity = beforeSave(entity);
+        entity.setEstado(EntidadeEstado.ATIVO);
         entity = super.insert(entity);
         return afterSave(entity);
     }
