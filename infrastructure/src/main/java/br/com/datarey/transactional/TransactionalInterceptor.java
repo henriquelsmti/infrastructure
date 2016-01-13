@@ -24,9 +24,6 @@ public class TransactionalInterceptor implements Serializable {
     @Inject
     private JpaUtil jpaUtil;
 
-    @Inject
-    private MessageUtil messageUtil;
-
     @AroundInvoke
     public Object auditar(InvocationContext context) throws Exception {
         if (context.getMethod().getModifiers() != Modifier.PUBLIC || jpaUtil.getEntityManager() != null) {
@@ -42,16 +39,13 @@ public class TransactionalInterceptor implements Serializable {
             try {
                 t.wait();
             } catch (InterruptedException e) {
-                lancarMessage(e.getMessage());
+               e.printStackTrace();
             }
         }
         if(transactionalReturn.containsErro()){
-            lancarMessage(transactionalReturn.getError().getMessage());
+            throw transactionalReturn.getError();
         }
         return transactionalReturn.getValue();
     }
 
-    private void lancarMessage(String message) {
-        messageUtil.showMessage(message, MessageType.ERROR);
-    }
 }
