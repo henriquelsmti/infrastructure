@@ -27,7 +27,7 @@ public class JpaUtil {
                 factory = Persistence.createEntityManagerFactory("banco");
             }
         }catch (Exception e){
-            LOGGER.error(e);
+            LOGGER.trace(e);
             throw e;
         }
     }
