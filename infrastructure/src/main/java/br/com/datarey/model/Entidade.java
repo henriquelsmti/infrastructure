@@ -9,8 +9,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import br.com.datarey.model.type.EntidadeEstado;
 
+import java.io.Serializable;
+
 @MappedSuperclass
-public abstract class Entidade {
+public abstract class Entidade implements Serializable{
 
     @Id
     @GeneratedValue
