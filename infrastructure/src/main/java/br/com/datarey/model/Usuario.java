@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
 public class Usuario extends Identificador {
 
     @NotBlank(message = "Login e obrigatorio")
