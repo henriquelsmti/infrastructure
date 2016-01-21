@@ -5,6 +5,13 @@
 	<artifactId>infrastructure</artifactId>
 	<version>0.0.6</version>
 
+	<repositories>
+		<repository>
+			<id>my-local-repo</id>
+			<url>file://${basedir}/lib</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -165,6 +172,63 @@
 			<version>3.4</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.1.4</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>br.com.datarey</groupId>
+			<artifactId>report-client</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.datarey</groupId>
+			<artifactId>report-infra</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.datarey</groupId>
+			<artifactId>service-infra</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson</groupId>
+			<artifactId>jackson-datatype-json-org</artifactId>
+			<version>1.8.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>2.7.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>log4j</groupId>
